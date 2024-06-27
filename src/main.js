@@ -1,8 +1,15 @@
 import express from 'express'
-import db from './database-connection.js'
+import cors from 'cors'
+import db from './config.js'
+import bodyParser from 'body-parser'
 const app = express()
-const port = 3000
+app.use(cors())
+app.use(bodyParser.json({extended:true}))
 
-app.listen(port, () => {
-  console.log(`Server succes connected in port ${port}`)
+app.get('/' , (req , res) => {
+ 
+})
+
+app.listen(3000, () => {
+  console.log(`Server succes connected in port 3000!`)
 })
