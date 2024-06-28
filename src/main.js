@@ -6,8 +6,20 @@ const app = express()
 app.use(cors())
 app.use(bodyParser.json({extended:true}))
 
-app.get('/' , (req , res) => {
- 
+app.post('/comment' , (req , res) => {
+  const data = {
+    username: req.body.username,
+    nickname: req.body.nickname,
+    comment: req.body.comment
+  }
+  db.query(`INSERT INTO commentar(username,nickname,comment) VALUES('${data.username}', '${data.nickname}', '${data.comment}')`, (results) => {
+      if(results) {
+        res.send(results)
+      }else {
+        res.send({message: 'Must Details!'})
+      }
+    }
+  )
 })
 
 app.listen(3000, () => {
