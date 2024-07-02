@@ -10,7 +10,7 @@ app.post('/comment' , (req , res) => {
   const data = {
     username: req.body.username,
     nickname: req.body.nickname,
-    comment: req.body.comment
+    comment: req.body.comment,
   }
   db.query(`INSERT INTO commentar(username,nickname,comment) VALUES('${data.username}', '${data.nickname}', '${data.comment}')`, (results) => {
       if(results) {
