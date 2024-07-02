@@ -12,11 +12,11 @@ app.post('/comment' , (req , res) => {
     nickname: req.body.nickname,
     comment: req.body.comment,
   }
-  db.query(`INSERT INTO commentar(username,nickname,comment) VALUES('${data.username}', '${data.nickname}', '${data.comment}')`, (results) => {
+  db.query(`INSERT INTO commentar(username,nickname,comment) VALUES('${data.username}','${data.nickname}','${data.comment}')`, (results) => {
       if(results) {
-        res.json({result: results})
+        res.send({results})
       }else {
-        res.json({message: 'Must Details!'})
+      res.send({message: results})
       }
     }
   )
