@@ -14,9 +14,9 @@ app.post('/comment' , (req , res) => {
   }
   db.query(`INSERT INTO commentar(username,nickname,comment) VALUES('${data.username}', '${data.nickname}', '${data.comment}')`, (results) => {
       if(results) {
-        res.send(results)
+        res.json({result: results})
       }else {
-        res.send({message: 'Must Details!'})
+        res.json({message: 'Must Details!'})
       }
     }
   )
