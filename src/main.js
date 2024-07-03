@@ -11,7 +11,7 @@ app.post('/comment' , (req , res) => {
   const nickname = req.body.nickname;
   const comment =  req.body.comment;
   db.query(`INSERT INTO commentar(username,nickname,comment) VALUES('${username}','${nickname}','${comment}')`, (results) => {
-      if(results) {
+      if(results.fatal) {
         res.send({results})
       }else {
       res.send({message: results})
