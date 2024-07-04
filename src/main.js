@@ -1,12 +1,27 @@
 import express from 'express'
 import cors from 'cors'
-import db from './config.js'
+import mysql from 'mysql';
 import bodyParser from 'body-parser'
 const app = express()
 app.use(bodyParser.json({extended:true}))
 app.use(bodyParser.json())
 app.use(cors())
 
+const db = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "db_back-end-shoes-lomba-sefest",
+})
+
+db.connect(() => {
+  try{
+      console.log('Database connection is success!')
+    }catch(error) {
+      console.error(`Database connection is ${error}!`)
+    }
+  })
+  
 app.get('/', (req,res) => {
   res.send('Hello API!')
 })
