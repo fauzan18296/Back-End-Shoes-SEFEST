@@ -7,10 +7,6 @@ const connection = mysql.createConnection({
 })
 
 connection.connect(() => {
-  try{
       console.log('Database connection is success!')
-    }catch(error) {
-      console.error(`Database connection is ${error}!`)
-    }
-  })
-  export default connection
+    });
+  export default connection;
