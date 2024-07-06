@@ -9,9 +9,9 @@ app.use(cors());
 
 const db = mysql.createConnection({
   host: "localhost",
-  user: "root",
+  user: "id22401126_db_elegant_shoe_shop",
   password: "",
-  database: "db_back-end-shoes-lomba-sefest",
+  database: "id22401126_db_elegant_shoe_shop_api_1",
 });
 
 db.connect((error) => {
