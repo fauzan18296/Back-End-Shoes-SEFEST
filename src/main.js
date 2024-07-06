@@ -5,7 +5,9 @@ import bodyParser from 'body-parser';
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+   origin: 'https://elegant-shoe-shop.vercel.app/comment'
+}));
 
 const db = mysql.createConnection({
   host: "localhost",
