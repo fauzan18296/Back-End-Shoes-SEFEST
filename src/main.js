@@ -1,46 +1,45 @@
-import express from 'express'
-import cors from 'cors'
+import express from 'express';
+import cors from 'cors';
 import mysql from 'mysql';
-import bodyParser from 'body-parser'
-const app = express()
-app.use(bodyParser.json({extended:true}))
-app.use(bodyParser.json())
-app.use(cors())
+import bodyParser from 'body-parser';
+
+const app = express();
+app.use(bodyParser.json());
+app.use(cors());
 
 const db = mysql.createConnection({
   host: "localhost",
   user: "root",
   password: "",
   database: "db_back-end-shoes-lomba-sefest",
-})
+});
 
-db.connect(() => {
-  try{
-      console.log('Database connection is success!')
-    }catch(error) {
-      console.error(`Database connection is ${error}!`)
+db.connect((error) => {
+  if (error) {
+    console.error(`Database connection error: ${error.message}`);
+  } else {
+    console.log('Database connection is successful!');
+  }
+});
+
+app.get('/', (req, res) => {
+  res.send('Hello API!');
+});
+
+app.post('/comment', (req, res) => {
+  const queries = 'INSERT INTO commentar (username, nickname, comment) VALUES (?, ?, ?)';
+  const { username, nickname, comment } = req.body;
+
+  db.query(queries, [username, nickname, comment], (error, results) => {
+    if (error) {
+      res.status(500).send({ error: error.message });
+    } else {
+      res.status(201).send({ message: 'Comment added successfully!', results });
     }
-  })
-  
-app.get('/', (req,res) => {
-  res.send('Hello API!')
-})
+  });
+});
 
-app.post('/comment' , (req , res) => {
-  const username = req.body.username;
-  const nickname = req.body.nickname;
-  const comment =  req.body.comment;
-  db.query(`INSERT INTO commentar(username,nickname,comment) VALUES('${username}','${nickname}','${comment}')`, (results) => {
-      if(results) {
-        res.send({results})
-      }else {
-      res.send({message: results})
-      }
-    }
-  )
-})
-
-const port = 3000
+const port = 3000;
 app.listen(port, () => {
-  console.log(`Server succes connected in port 3000!`)
-})
+  console.log(`Server successfully connected on port ${port}!`);
+});
