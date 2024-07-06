@@ -7,8 +7,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors({
    origin: 'https://elegant-shoe-shop.vercel.app/comment',
-   methods: 'GET,POST',
-  allowedHeaders: 'Content-Type'
 }));
 
 const db = mysql.createConnection({
