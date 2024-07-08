@@ -6,7 +6,7 @@ import bodyParser from 'body-parser';
 const app = express();
 app.use(bodyParser.json());
 app.use(cors({
-   origin: 'https://elegant-shoe-shop.vercel.app',
+   origin: 'https://elegant-shoe-shop.vercel.app/comment',
    methods: ['GET','POST'],
   allowedHeaders: 'Content-Type'
 }));
