@@ -7,15 +7,15 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors({
    origin: 'https://elegant-shoe-shop.vercel.app',
-   methods: ['GET', 'POST'],
-   allowedHeaders: ['Content-Type'],
+   methods: ['GET','POST'],
+  allowedHeaders: 'Content-Type'
 }));
 
 const db = mysql.createConnection({
-  host: "localhost",
-  user: "id22401126_db_elegant_shoe_shop",
-  password: "",
-  database: "id22401126_db_elegant_shoe_shop_api_1",
+  host: "ziy.h.filess.io",
+  user: "Elegantshoeapi1_lessonyour",
+  password: "ab306a9067b2d3d13b5ba97631c18f31337faf82",
+  database: "Elegantshoeapi1_lessonyour",
 });
 
 db.connect((error) => {
