@@ -8,10 +8,10 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const db = mysql.createConnection({
-  host: "ziy.h.filess.io",
-  user: "Elegantshoeapi1_lessonyour",
-  password: "ab306a9067b2d3d13b5ba97631c18f31337faf82",
-  database: "Elegantshoeapi1_lessonyour",
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "db_back-end-shoes-lomba-sefest",
 });
 
 db.connect((error) => {
